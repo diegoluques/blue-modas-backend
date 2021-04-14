@@ -58,6 +58,11 @@ namespace BlueModas.Api.Data
 			return _context.CestaCompra.Include(c => c.Itens).FirstOrDefault(c => c.CestaCompraId == id);
 		}
 
+		public bool ProdutoFoiVendido(int idProduto)
+		{
+			return _context.ItemCompra.Any(ic => ic.ProdutoId == idProduto);
+		}
+
 		public ItemCompra ObterPorItemId(int id)
 		{
 			return _context.ItemCompra.Find(id);
